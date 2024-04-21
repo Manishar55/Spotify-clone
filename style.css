@@ -75,6 +75,7 @@ body{
 }
 .right{
     margin: 16px 0;
+    position: relative;
 }
 
 .spotifyPlsylists{
@@ -164,17 +165,88 @@ body{
 }
 
 
+.playbar{
+    position: absolute;
+    bottom: 20px;
+    background-color: rgb(183, 180, 180);
+    width: 70vw;
+    padding: 12px;
+    position: fixed;
+    border-radius: 10px;
+    filter: invert(1);
+    height: 40px;
+}
 
+.songbuttons{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.songList ul{
+    padding: 0 42px;
+}
+.songList .info{
+    width: 340px;
+}
+.songList ul li{
+    list-style-type: decimal;
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+    padding: 12px 0;
+    border: 1px solid gray;
+    margin: 12px 0;
+    padding: 13px;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+.songList{
+    height: 570px;
+    overflow-y: scroll;
+}
+.playnow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.playnow span{
+    font-size: 13px;
+    width: 57px;
+    padding: 5px;
+}
+.seekbar{
+    height: 4px;
+    width: 98%;
+    background: black;
+    position: absolute;
+    bottom: 0;
+    border-radius: 10px;
+    margin: 6px;
+    cursor: pointer;
+}
+.circle{
+    width: 15px;
+    height: 15px;
+    border-radius: 13px;
+    position: relative;
+    bottom: 7px;
+    background-color: black;
+    left: 0%;
+    transition: left 0.5s;
+}
+.songbuttons img{
+    cursor: pointer;
+}
+.songinfo, .songtime{
+    color: black;
+    padding: 0 12px;
+}
 
+.bar{
+    display: flex;
+    justify-content: space-between;
 
-
-
-
-
-
-
-
-
+}
 
 
 
