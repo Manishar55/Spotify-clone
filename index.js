@@ -1,11 +1,13 @@
 
 console.log('Lets write js')
 
+let songs;
+
 let currentSong = new Audio();
 
 function secondsToMinutesSeconds(seconds){
     if(isNaN(seconds) || seconds<0){
-        return "Invalid Input";
+        return "00:00";
     }
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
@@ -50,7 +52,7 @@ const playMusic =(track, pause=false)=>{
 async function main(){
 
     //get the lists of all songs
-    let songs = await getSongs();
+    songs = await getSongs();
     playMusic(songs[0], true);
 
     let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0];
@@ -94,7 +96,7 @@ async function main(){
         }
         else{
             currentSong.pause()
-            play.src="play.svg"
+            play.src="playsong.svg"
             
         }
     })
@@ -113,6 +115,37 @@ async function main(){
         document.querySelector(".circle").style.left=percent+"%";
         currentSong.currentTime=((currentSong.duration)*percent)/100;
     })
-    
+
+    //Add an event listener for hamburger
+    document.querySelector(".ham").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left="0";
+    })
+
+    //Add an event listener for close button
+    document.querySelector(".close").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left="-120%";
+    })
+
+     //Add an event listener to prev
+     prev.addEventListener("click", ()=>{
+        console.log("prev clicked")
+
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
+        if((index-1)>=0){
+            playMusic(songs[index-1]);
+        }
+    })
+
+    //Add an event listener to next
+    next.addEventListener("click", ()=>{
+        currentSong.pause();
+        console.log("next clicked")
+
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+        if((index+1)<songs.length){
+            playMusic(songs[index+1])
+        }
+    })
+ 
 }
 main()
